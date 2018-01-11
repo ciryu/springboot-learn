@@ -33,11 +33,12 @@ import java.lang.annotation.Target;
  *
  * Date:2017/12/30 0030  Time:00:45
  */
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
+@Target(ElementType.METHOD)// 作用到方法
+@Retention(RetentionPolicy.RUNTIME)// 注解会在class字节码文件中存在，在运行时可以通过反射获取到
+@Documented// 说明该注解将被包含在javadoc中
 public @interface Action {
 
+	// 类似于方法
 	String name();
 
 }

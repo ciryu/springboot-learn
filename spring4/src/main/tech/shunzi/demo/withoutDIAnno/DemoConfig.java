@@ -23,19 +23,22 @@ public class DemoConfig {
 
 	@Bean
 	public UseSayHelloService useSayHelloService() {
+		System.out.println("依赖注入-无参调用");
 		UseSayHelloService useSayHelloService = new UseSayHelloService();
-		// 注入对应的 sayHelloService
+		// 调用sayHelloService()注入对应的 sayHelloService
 		useSayHelloService.setSayHelloService(sayHelloService());
 		return useSayHelloService;
 	}
 
 	/**
 	 * 通过使用参数注入sayHelloService到对应的Bean
+	 * 注：优先于上文中无参的函数的调用。
 	 * @param sayHelloService 参数
 	 * @return UseSayHelloSayService
 	 */
 	@Bean
 	public UseSayHelloService useSayHelloService(SayHelloService sayHelloService) {
+		System.out.println("依赖注入-有参调用");
 		UseSayHelloService useSayHelloService = new UseSayHelloService();
 		useSayHelloService.setSayHelloService(sayHelloService);
 		return useSayHelloService;

@@ -3,8 +3,13 @@ package tech.shunzi.demo;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * Version:v1.0 (description:  )
+ * Version:v1.0 (description: Demo运行器 )
  * Date:2017/12/30 0030  Time:00:15
+ * 步骤如下：
+ * 1、创建对应的Spring容器；
+ * 2、Spring容器加载对应的配置文件（此处使用Java配置，即DemoConfig.class）来创建对应的Bean；
+ * 3、执行对应的目标方法（调用容器Bean对应的方法）
+ * 4、关闭容器时释放容器资源
  */
 public class DemoRunner {
 

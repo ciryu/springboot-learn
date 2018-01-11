@@ -25,8 +25,9 @@ import java.lang.reflect.Method;
 @Component
 public class LogAspect {
 
+	// 定义指定Action注解修饰的方法均为切点
 	@Pointcut("@annotation(tech.shunzi.demo.aop.Action)")
-	public void annotationPointCut(){};
+	public void annotationPointCut(){}
 
 	@After("annotationPointCut()")
 	public void after(JoinPoint joinPoint) {
