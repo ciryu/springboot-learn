@@ -46,6 +46,7 @@ public class Elconfig {
 	private Resource testUrl;
 
 	//注入配置文件 使用@Value注入，则需要配置一个PropertySourcesPlaceholderConfigurer
+	//此处使用 $ 不使用 #   参考博文 http://blog.csdn.net/nimeijian/article/details/70175373
 	@Value("${book.name}")
 	private String bookName;
 
