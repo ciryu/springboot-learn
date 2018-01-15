@@ -1,4 +1,4 @@
-package tech.shunzi.common.config;
+package tech.shunzi.common.config.scope;
 
 import org.springframework.stereotype.Service;
 
