@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncTaskService {
 
+	// @Async 表明该方法是个异步方法。可以修饰类。此处会自动注入使用线程池
 	@Async
 	public void executeAsyncTask(Integer i) {
 		System.out.println("执行异步任务：" + i);
