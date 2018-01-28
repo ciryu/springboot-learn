@@ -26,7 +26,7 @@ public class SpringbootApplication {
 		SpringApplication.run(SpringbootApplication.class, args);
 	}
 
-	@RequestMapping("/index")
+	@RequestMapping("/hello")
 	public String index() {
 		return "Hello Spring Boot!";
 	}

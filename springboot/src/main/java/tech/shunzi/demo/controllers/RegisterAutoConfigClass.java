@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tech.shunzi.demo.SpringbootApplication;
 import tech.shunzi.demo.service.HelloService;
 
 /**
@@ -19,13 +18,13 @@ public class RegisterAutoConfigClass {
 	@Autowired
 	private HelloService helloService;
 
-	@GetMapping("/")
+	@GetMapping("/register")
 	public String index() {
 		return helloService.sayHello();
 	}
 
 	public static void main(String[] args){
-		SpringApplication.run(SpringbootApplication.class, args);
+		SpringApplication.run(RegisterAutoConfigClass.class, args);
 	}
 
 }
