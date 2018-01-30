@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<head>
+    <title>Home</title>
+    <script th:src="@{sockjs.min.js}"></script>
+    <script th:src="@{stomp.min.js}"></script>
+    <script th:src="@{jquery-1.10.2.min.js}"></script>
+</head>
+<body>
+<p>
+    聊天室
+</p>
+
+<form id="wiselyForm">
+    <textarea rows="4" cols="60" name="text"></textarea>
+    <input type="submit"/>
+</form>
+
+<script th:inline="javascript">
+    $('#wiselyForm').submit(function (e) {
+        e.preventDefault();
+        var text = $('#wiselyForm').find('textarea[name="text"]').val();
+        sendSpittle(text);
+    });
+
+    var sock = new SockJS("/helloboot/endpointChat"); //1
+    var stomp = Stomp.over(sock);
+    stomp.connect('guest', 'guest', function (frame) {
+        stomp.subscribe("/user/queue/notifications", handleNotification);//2
+    });
+
+
+    function handleNotification(message) {
+        $('#output').append("<b>Received: " + message.body + "</b><br/>")
+    }
+
+    function sendSpittle(text) {
+        var data =
+        $('#output').append("<b>Sent(" + getNowFormatDate() + "): " + text + "</b><br/>")
+        stomp.send("/chat", {}, text);//3
+    }
+    $('#stop').click(function () {
+        sock.close()
+    });
+
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperatorOne = "-";
+        var seperatorTwo = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentDate = date.getFullYear() + seperatorOne + month + seperatorOne + strDate
+                          + " " + date.getHours() + seperatorTwo + date.getMinutes()
+                          + seperatorTwo + date.getSeconds();
+        return currentDate;
+    }
+</script>
+
+<div id="output"></div>
+</body>
+</html>
