@@ -2,6 +2,7 @@ package tech.shunzi.repository;
 
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.lang.Nullable;
 
 import tech.shunzi.domain.Employee;
 
@@ -13,5 +14,8 @@ public interface EmployeeRepository
 		extends SelfDefineRepository<Employee, Integer>//extends Repository<Employee, Integer> {
 {
 
-	Employee findByName(String name);
+	@Nullable
+	Employee findByName(
+			@Nullable
+					String name);
 }
