@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 public class DemoPublisher {
 
 	@Autowired
-	ApplicationContext applicationContext;
+	private ApplicationContext applicationContext;
 
 	public void publish(String msg) {
+        System.out.println("Before publishing event****************************");
 		applicationContext.publishEvent(new DemoEvent(this,msg));
+        System.out.println("After publishing event*****************************");
 	}
 
 }

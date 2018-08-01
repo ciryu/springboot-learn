@@ -15,6 +15,8 @@ public class EventDemoRunner {
 
 		demoPublisher.publish("hello application event");
 
+		System.out.println("Before closing context");
 		context.close();
+        System.out.println("After closing context");
 	}
 }
