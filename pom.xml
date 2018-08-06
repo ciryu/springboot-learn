@@ -11,6 +11,7 @@
         <module>spring4</module>
         <module>springboot</module>
         <module>springdata</module>
+        <module>web-flux</module>
     </modules>
     <properties>
         <spring4.version>1.0.0.alpha</spring4.version>
